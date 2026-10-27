@@ -1,7 +1,7 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycby64uUvj6-FhoZUwrjDBbywxxJNox84n0I4RGZ1zxXUDIYRK4uMZ_EAJwR7N82_oJFDgQ/exec";
+    const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbwttX2bh4JD_PK0eKyh3l-schauLXRnAvEh7E26Q18kVn4fPL11iua_5DKSm0DMESzqqg/exec";
     const form = document.getElementById("rsvpForm");
     const submitButton = document.getElementById("rsvpSubmit");
     const status = document.getElementById("rsvpStatus");
