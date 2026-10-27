@@ -1,0 +1,1325 @@
+/* =========================
+   GLOBAL
+========================= */
+
+:root {
+    --background: #faf6f0;
+    --surface: #ffffff;
+    --surface-soft: #f3ede4;
+    --text: #2d2a26;
+    --muted: #6f665d;
+    --gold: #c8a96a;
+    --gold-dark: #aa884d;
+    --disabled: #c8bda8;
+    --shadow: 0 10px 30px rgba(45, 42, 38, 0.09);
+    --radius: 22px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
+}
+
+body {
+    min-width: 320px;
+    font-family: "Cormorant Garamond", serif;
+    background: var(--background);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+main {
+    width: 100%;
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    font: inherit;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(44px, 7vw, 80px) 20px;
+    text-align: center;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)),
+        url("images/hero.jpg") center / cover no-repeat;
+}
+
+.hero-content {
+    width: min(100%, 720px);
+    padding: 0 clamp(4px, 2vw, 20px);
+}
+
+.cross {
+    margin-bottom: 22px;
+    color: #44403c;
+    font-size: clamp(42px, 8vw, 60px);
+    line-height: 1;
+}
+
+.verse {
+    margin-bottom: 8px;
+    font-size: clamp(1.05rem, 3vw, 1.38rem);
+    font-style: italic;
+    line-height: 1.55;
+}
+
+.verse-ref {
+    margin-bottom: clamp(30px, 6vw, 45px);
+    color: var(--muted);
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+.family-text {
+    margin-bottom: 22px;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-style: italic;
+    letter-spacing: 0.11em;
+}
+
+.parent-details {
+    max-width: 540px;
+    margin: 0 auto 32px;
+    font-size: clamp(0.96rem, 2vw, 1.1rem);
+    line-height: 1.75;
+}
+
+.bride-name,
+.groom-name {
+    font-family: "Cinzel", serif;
+    font-size: clamp(2.35rem, 9vw, 4.6rem);
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: clamp(0.08em, 2vw, 0.18em);
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+}
+
+.and-symbol {
+    margin: 8px 0;
+    font-size: clamp(1.9rem, 5vw, 3rem);
+    line-height: 1;
+}
+
+.groom-family {
+    margin: 16px auto 34px;
+    font-size: clamp(0.92rem, 2vw, 1rem);
+    letter-spacing: 0.04em;
+}
+
+.date-block {
+    margin-bottom: 34px;
+}
+
+.day {
+    margin-bottom: 6px;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    letter-spacing: 0.24em;
+}
+
+.date {
+    font-size: clamp(1.2rem, 4vw, 1.9rem);
+    font-weight: 600;
+    letter-spacing: clamp(0.08em, 1vw, 0.18em);
+}
+
+#startBtn {
+    min-width: 180px;
+    min-height: 48px;
+    padding: 13px 32px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background: var(--gold);
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1.02rem;
+    box-shadow: 0 7px 18px rgba(170, 136, 77, 0.22);
+    transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+#startBtn:hover,
+#startBtn:focus-visible {
+    background: var(--gold-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(170, 136, 77, 0.3);
+}
+
+#startBtn:focus-visible,
+.music-btn:focus-visible,
+.buttons a:focus-visible,
+.rsvp-help a:focus-visible,
+.rsvp-contact a:focus-visible {
+    outline: 3px solid rgba(139, 111, 71, 0.32);
+    outline-offset: 3px;
+}
+
+/* =========================
+   SHARED SECTIONS
+========================= */
+
+.section {
+    width: min(100%, 1040px);
+    margin: 0 auto;
+    padding: clamp(58px, 8vw, 90px) clamp(16px, 4vw, 28px);
+}
+
+.section-title {
+    margin-bottom: 24px;
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+/* =========================
+   EVENTS
+========================= */
+
+.event-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    max-width: 760px;
+    margin: 0 auto 26px;
+    padding: clamp(24px, 5vw, 34px);
+    border: 1px solid rgba(200, 169, 106, 0.15);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.event-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 5px;
+    background: var(--gold);
+}
+
+.event-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(45, 42, 38, 0.12);
+}
+
+.event-card h3 {
+    margin-bottom: 14px;
+    font-size: clamp(1.45rem, 4vw, 1.8rem);
+    line-height: 1.25;
+}
+
+.event-card p {
+    margin-bottom: 7px;
+    font-size: clamp(1.25rem, 2.3vw, 1.08rem);
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.buttons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 11px 16px;
+    border-radius: 13px;
+    background: var(--gold);
+    color: #ffffff;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+    box-shadow: 0 5px 14px rgba(170, 136, 77, 0.16);
+    transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.buttons a:hover,
+.buttons a:focus-visible {
+    background: var(--gold-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(170, 136, 77, 0.24);
+}
+
+.buttons .disabled-link,
+.buttons .disabled-link:hover,
+.buttons .disabled-link:focus-visible {
+    background: var(--disabled);
+    color: #ffffff;
+    opacity: 0.78;
+    cursor: not-allowed;
+    pointer-events: none;
+    transform: none;
+    box-shadow: none;
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery-hint {
+    margin-bottom: 16px;
+    color: #8b6f47;
+    text-align: center;
+    font-size: clamp(0.92rem, 2.5vw, 1rem);
+    animation: swipeHint 1.8s ease-in-out infinite;
+}
+
+@keyframes swipeHint {
+
+    0%,
+    100% {
+        transform: translateX(-4px);
+        opacity: 0.72;
+    }
+
+    50% {
+        transform: translateX(4px);
+        opacity: 1;
+    }
+}
+
+.gallery-slider {
+    display: flex;
+    gap: clamp(14px, 3vw, 22px);
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 4px max(4px, calc((100% - min(82vw, 420px)) / 2)) 20px;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: max(4px, calc((100% - min(82vw, 420px)) / 2));
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y pinch-zoom;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: auto;
+}
+
+.gallery-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-slider img {
+    width: min(82vw, 420px);
+    aspect-ratio: 2 / 3;
+    flex: 0 0 auto;
+    border-radius: 24px;
+    background: #eee8df;
+    object-fit: cover;
+    object-position: center;
+    scroll-snap-align: center;
+    box-shadow: 0 10px 24px rgba(45, 42, 38, 0.11);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.gallery-slider img:hover {
+    transform: scale(1.01);
+    box-shadow: 0 14px 30px rgba(45, 42, 38, 0.15);
+}
+
+.gallery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 2px;
+}
+
+.gallery-dots span {
+    display: block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #d5c3a0;
+}
+
+.gallery-dots span:first-child {
+    width: 22px;
+    border-radius: 999px;
+    background: var(--gold-dark);
+}
+
+/* =========================
+   COMPACT RSVP
+========================= */
+
+.section-eyebrow {
+    margin-bottom: 6px;
+    color: #8b6f47;
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.rsvp {
+    text-align: center;
+}
+
+.rsvp-intro {
+    max-width: 520px;
+    margin: 0 auto 26px;
+    color: var(--muted);
+    font-size: 1.08rem;
+}
+
+.rsvp-card {
+    position: relative;
+    width: min(100%, 560px);
+    margin: 0 auto;
+    padding: clamp(22px, 5vw, 34px);
+    border: 1px solid rgba(200, 169, 106, 0.2);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.92);
+    text-align: left;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label,
+.attendance-group legend {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    min-height: 48px;
+    padding: 11px 14px;
+    border: 1px solid #ded5c8;
+    border-radius: 12px;
+    background: #fffdf9;
+    color: var(--text);
+    font: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background-color 180ms ease;
+}
+
+.form-group input::placeholder {
+    color: #8d857b;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--gold-dark);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(200, 169, 106, 0.18);
+}
+
+.attendance-group {
+    margin: 0 0 20px;
+    padding: 0;
+    border: 0;
+}
+
+.choice-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.choice-tab {
+    position: relative;
+    cursor: pointer;
+}
+
+.choice-tab input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.choice-tab span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 10px 12px;
+    border: 1px solid #ded5c8;
+    border-radius: 12px;
+    background: #fffdf9;
+    color: var(--text);
+    text-align: center;
+    line-height: 1.2;
+    transition:
+        border-color 180ms ease,
+        background-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.choice-tab input:checked+span {
+    border-color: var(--gold-dark);
+    background: var(--gold);
+    color: #ffffff;
+    box-shadow: 0 5px 14px rgba(170, 136, 77, 0.2);
+}
+
+.choice-tab input:focus-visible+span {
+    outline: 3px solid rgba(139, 111, 71, 0.3);
+    outline-offset: 2px;
+}
+
+.choice-tab span:hover {
+    border-color: var(--gold);
+    transform: translateY(-1px);
+}
+
+.rsvp-submit {
+    width: 100%;
+    min-height: 50px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--gold);
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.05rem;
+    font-weight: 600;
+    box-shadow: 0 7px 18px rgba(170, 136, 77, 0.22);
+    transition:
+        background-color 180ms ease,
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        opacity 180ms ease;
+}
+
+.rsvp-submit:hover,
+.rsvp-submit:focus-visible {
+    background: var(--gold-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(170, 136, 77, 0.28);
+}
+
+.rsvp-submit:focus-visible {
+    outline: 3px solid rgba(139, 111, 71, 0.3);
+    outline-offset: 3px;
+}
+
+.rsvp-submit:disabled {
+    cursor: wait;
+    opacity: 0.7;
+    transform: none;
+}
+
+.rsvp-status {
+    min-height: 24px;
+    margin-top: 14px;
+    text-align: center;
+    font-size: 0.98rem;
+}
+
+.rsvp-status.success {
+    color: #52734d;
+}
+
+.rsvp-status.error {
+    color: #9c3f3f;
+}
+
+.rsvp-contact {
+    margin-top: 22px;
+}
+
+.rsvp-contact a {
+    color: #7f6033;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.rsvp-contact a:hover,
+.rsvp-contact a:focus-visible {
+    color: var(--gold-dark);
+}
+
+.rsvp-contact a:focus-visible {
+    outline: 3px solid rgba(139, 111, 71, 0.3);
+    outline-offset: 3px;
+}
+
+.honeypot {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+@media (max-width: 480px) {
+    .choice-tabs {
+        grid-template-columns: 1fr;
+    }
+
+    .rsvp-card {
+        padding: 22px 18px;
+        border-radius: 18px;
+    }
+}
+
+/* =========================
+   THANK YOU
+========================= */
+
+.thank-you {
+    padding: clamp(80px, 10vw, 120px) 20px;
+    text-align: center;
+    background: var(--surface-soft);
+}
+
+.thank-you h2 {
+    margin-bottom: 18px;
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    line-height: 1.15;
+}
+
+.thank-you p {
+    max-width: 560px;
+    margin: 0 auto 14px;
+    font-size: clamp(1.05rem, 2.5vw, 1.22rem);
+}
+
+.thank-you h3 {
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
+}
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.music-btn {
+    position: fixed;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--gold);
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 21px;
+    box-shadow: 0 6px 18px rgba(45, 42, 38, 0.24);
+    transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.music-btn:hover,
+.music-btn:focus-visible {
+    background: var(--gold-dark);
+    transform: scale(1.06);
+}
+
+/* =========================
+   TABLETS AND DESKTOP
+========================= */
+
+@media (min-width: 769px) {
+    .event-card {
+        padding: 36px 40px;
+    }
+
+    .gallery-slider {
+        padding-inline: calc((100% - 420px) / 2);
+        scroll-padding-inline: calc((100% - 420px) / 2);
+    }
+}
+
+@media (min-width: 1100px) {
+    .buttons {
+        grid-template-columns: repeat(2, minmax(190px, 1fr));
+    }
+
+    .gallery-slider img {
+        width: 420px;
+    }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 600px) {
+    .hero {
+        align-items: flex-start;
+        padding: 38px 16px 48px;
+    }
+
+    .hero-content {
+        padding: 0;
+    }
+
+    .parent-details {
+        line-height: 1.58;
+    }
+
+    .buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-slider {
+        padding-inline: 3px;
+        scroll-padding-inline: 3px;
+    }
+
+    .gallery-slider img {
+        width: min(76vw, 330px);
+        height: min(66svh, 500px);
+        max-height: 500px;
+
+        flex: 0 0 auto;
+
+        object-fit: cover;
+        object-position: center;
+
+        scroll-snap-align: center;
+    }
+
+    .rsvp-form-wrapper {
+        height: 1160px;
+        border-radius: 16px;
+    }
+
+    .music-btn {
+        width: 52px;
+        height: 52px;
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 360px) {
+    .section {
+        padding-inline: 13px;
+    }
+
+    .event-card {
+        padding: 21px 18px;
+    }
+
+    .bride-name,
+    .groom-name {
+        font-size: 2.2rem;
+        letter-spacing: 0.07em;
+    }
+
+    .date {
+        letter-spacing: 0.06em;
+    }
+
+    .gallery-slider img {
+        width: 74vw;
+        height: min(62svh, 430px);
+    }
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================================
+   FINAL PROFESSIONAL OVERRIDES
+   Hero, navigation, events, gallery, RSVP and phone support
+========================================================= */
+
+:root {
+    --gold-soft: rgba(200, 169, 106, 0.12);
+    --success: #52734d;
+    --error: #9c3f3f;
+}
+
+/* Correct centered hero with phone safe areas */
+.hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    align-items: center;
+    justify-content: center;
+    padding:
+        max(40px, env(safe-area-inset-top)) clamp(16px, 4vw, 28px) max(44px, env(safe-area-inset-bottom));
+}
+
+.hero-content {
+    width: min(100%, 720px);
+    margin: auto;
+    padding: 0 clamp(2px, 2vw, 18px);
+}
+
+.cross {
+    margin-bottom: clamp(16px, 4vw, 24px);
+    font-size: clamp(38px, 8vw, 60px);
+}
+
+.verse {
+    max-width: 540px;
+    margin: 0 auto clamp(6px, 1.5vw, 10px);
+    font-size: clamp(1rem, 3vw, 1.38rem);
+    line-height: 1.5;
+}
+
+.verse-ref {
+    margin-bottom: clamp(26px, 6vw, 44px);
+    font-size: clamp(0.88rem, 2.4vw, 1rem);
+    letter-spacing: 0.03em;
+}
+
+.family-text {
+    margin-bottom: clamp(16px, 4vw, 24px);
+    font-size: clamp(0.98rem, 2.7vw, 1.2rem);
+    letter-spacing: clamp(0.05em, 1vw, 0.11em);
+}
+
+.parent-details {
+    max-width: 540px;
+    margin: 0 auto clamp(24px, 5vw, 34px);
+    font-size: clamp(0.94rem, 2.4vw, 1.1rem);
+    line-height: 1.65;
+}
+
+.bride-name,
+.groom-name {
+    font-size: clamp(2.2rem, 9vw, 4.6rem);
+    line-height: 1.12;
+    letter-spacing: clamp(0.06em, 2vw, 0.18em);
+    overflow-wrap: anywhere;
+}
+
+.and-symbol {
+    margin: clamp(5px, 1.5vw, 10px) 0;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+}
+
+.groom-family {
+    max-width: 540px;
+    margin:
+        clamp(12px, 3vw, 17px) auto clamp(26px, 5vw, 36px);
+    font-size: clamp(0.9rem, 2.3vw, 1rem);
+    line-height: 1.5;
+}
+
+.date-block {
+    margin-bottom: clamp(26px, 5vw, 36px);
+}
+
+.day {
+    font-size: clamp(0.86rem, 2.3vw, 1rem);
+    letter-spacing: clamp(0.14em, 2vw, 0.24em);
+}
+
+.date {
+    font-size: clamp(1.15rem, 4vw, 1.9rem);
+    letter-spacing: clamp(0.06em, 1vw, 0.17em);
+}
+
+/* Compact sticky navigation shown after Tap To Begin */
+.site-nav {
+    position: fixed;
+    top: max(12px, env(safe-area-inset-top));
+    left: 50%;
+    z-index: 9000;
+    display: flex;
+    gap: 4px;
+    padding: 5px;
+    border: 1px solid rgba(200, 169, 106, 0.3);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 8px 24px rgba(45, 42, 38, 0.12);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -18px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: opacity 240ms ease, transform 240ms ease;
+}
+
+.site-nav.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+}
+
+.site-nav a {
+    padding: 7px 13px;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+    background: var(--gold-soft);
+    color: var(--gold-dark);
+}
+
+/* Restrained section reveals */
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 520ms ease, transform 520ms ease;
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: none;
+}
+
+/* Improved event hierarchy and consistent SVG icons */
+.event-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.event-heading h3 {
+    margin: 0;
+    font-size: clamp(1.45rem, 4vw, 1.85rem);
+    line-height: 1.2;
+}
+
+.event-meta {
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: clamp(0.98rem, 2.4vw, 1.08rem);
+}
+
+.event-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 46px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--gold-soft);
+    color: var(--gold-dark);
+}
+
+.event-icon svg,
+.buttons svg,
+.button-link svg {
+    width: 21px;
+    height: 21px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Faded dress and colour theme panel */
+.theme-box {
+    margin-bottom: 22px;
+    padding: 16px 18px;
+    border: 1px solid rgba(200, 169, 106, 0.28);
+    border-radius: 15px;
+    background: linear-gradient(135deg,
+            rgba(200, 169, 106, 0.12),
+            rgba(243, 237, 228, 0.5));
+}
+
+.theme-label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--gold-dark);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.theme-box strong {
+    display: block;
+    font-size: 1.12rem;
+}
+
+.theme-box p {
+    color: var(--muted);
+}
+
+.theme-box small {
+    display: block;
+    margin-top: 5px;
+    color: #8d5c55;
+    font-size: 0.92rem;
+}
+
+.muted-theme {
+    opacity: 0.82;
+}
+
+.swatches {
+    display: flex;
+    gap: 7px;
+    margin-top: 9px;
+}
+
+.swatch {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(45, 42, 38, 0.12);
+}
+
+.royal-blue {
+    background: #1d3f86;
+}
+
+.dark-green {
+    background: #224f3d;
+}
+
+.beige {
+    background: #d8c49f;
+}
+
+.buttons a,
+.button-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.button-link.disabled-link {
+    background: var(--disabled);
+    color: #ffffff;
+    opacity: 0.78;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Swipe hint hides after interaction */
+.gallery-hint {
+    transition: opacity 260ms ease, height 260ms ease, margin 260ms ease;
+}
+
+.gallery-hint.hidden {
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+    opacity: 0;
+    animation: none;
+}
+
+/* Dynamic clickable gallery dots */
+.gallery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 3px;
+}
+
+.gallery-dots button {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: #d5c3a0;
+    cursor: pointer;
+    transition: width 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.gallery-dots button:hover {
+    transform: scale(1.15);
+}
+
+.gallery-dots button.active {
+    width: 24px;
+    background: var(--gold-dark);
+}
+
+/* Compact native RSVP and success state */
+.rsvp-panel {
+    width: min(100%, 560px);
+    margin: 0 auto;
+}
+
+.rsvp-card,
+.rsvp-success {
+    padding: clamp(22px, 5vw, 34px);
+    border: 1px solid rgba(200, 169, 106, 0.2);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: var(--shadow);
+}
+
+.rsvp-card {
+    position: relative;
+    text-align: left;
+}
+
+.rsvp-success {
+    text-align: center;
+}
+
+.rsvp-success>svg {
+    width: 54px;
+    height: 54px;
+    margin: 0 auto 14px;
+    padding: 12px;
+    border-radius: 50%;
+    background: rgba(82, 115, 77, 0.12);
+    fill: none;
+    stroke: var(--success);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.rsvp-success h3 {
+    margin-bottom: 8px;
+    font-size: 1.7rem;
+}
+
+.rsvp-success>p:not(.section-eyebrow) {
+    color: var(--muted);
+}
+
+.secondary-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--gold-dark);
+}
+
+.secondary-button:hover,
+.secondary-button:focus-visible {
+    background: var(--gold-soft);
+}
+
+.rsvp-status.success {
+    color: var(--success);
+}
+
+.rsvp-status.error {
+    color: var(--error);
+}
+
+/* Standard phones */
+@media (max-width: 600px) {
+    .hero {
+        min-height: 100svh;
+        align-items: center;
+        padding:
+            max(30px, env(safe-area-inset-top)) 16px max(36px, env(safe-area-inset-bottom));
+    }
+
+    .hero-content {
+        width: 100%;
+        padding: 0;
+    }
+
+    .parent-details {
+        line-height: 1.55;
+    }
+
+    .buttons,
+    .choice-tabs {
+        grid-template-columns: 1fr;
+    }
+
+    .rsvp-card,
+    .rsvp-success {
+        padding: 22px 18px;
+        border-radius: 18px;
+    }
+
+    .site-nav a {
+        padding: 7px 10px;
+        font-size: 0.86rem;
+    }
+}
+
+/* Extra-small phones */
+@media (max-width: 360px) {
+    .hero {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+
+    .bride-name,
+    .groom-name {
+        font-size: 2.1rem;
+        letter-spacing: 0.055em;
+    }
+
+    .family-text {
+        letter-spacing: 0.04em;
+    }
+
+    .date {
+        letter-spacing: 0.045em;
+    }
+
+    #startBtn {
+        width: min(100%, 220px);
+    }
+}
+
+/* Short landscape phones */
+@media (max-height: 520px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .cross {
+        margin-bottom: 12px;
+        font-size: 36px;
+    }
+
+    .verse-ref,
+    .parent-details,
+    .groom-family,
+    .date-block {
+        margin-bottom: 22px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* =========================
+   INVITATION VARIANTS + MESSAGE
+========================= */
+
+.event-card[hidden] {
+    display: none !important;
+}
+
+.form-group textarea {
+    display: block;
+    width: 100%;
+    min-height: 112px;
+    padding: 12px 14px;
+    border: 1px solid #ded5c8;
+    border-radius: 12px;
+    background: #fffdf9;
+    color: var(--text);
+    font: inherit;
+    font-size: 1rem;
+    line-height: 1.45;
+    resize: vertical;
+    outline: none;
+    transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.form-group textarea:focus {
+    border-color: var(--gold-dark);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(200, 169, 106, 0.18);
+}
+
+.form-group textarea::placeholder {
+    color: #8d857b;
+}
+
+.optional-label {
+    margin-left: 5px;
+    color: var(--muted);
+    font-size: 0.86rem;
+    font-weight: 400;
+}
+
+.field-help {
+    display: block;
+    margin-top: 5px;
+    color: var(--muted);
+    text-align: right;
+    font-size: 0.82rem;
+}
+
+.wedding-buttons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.wedding-calendar-button {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 600px) {
+    .wedding-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .wedding-calendar-button {
+        grid-column: auto;
+    }
+}
